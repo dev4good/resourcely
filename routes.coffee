@@ -9,15 +9,15 @@ User     = require './models/User'
   # JSON for landing page stream (offers)
   #
   @get '/offers': ->
-    Resource.find ['type': 'offer', 'taker': '$eq': null, 'since': '$gte': new Date(), 'until': '$gte': new Date()],  (err, offers) =>
+    Resource.find ['type': 'offer', 'taker': '$eq': null, 'start': '$gte': new Date(), 'end': '$gte': new Date()],  (err, offers) =>
       @response.json offers
 
   #
   # JSON for landing page stream (requests)
   #
   @get '/requests': ->
-    Resource.find ['type': 'requests', 'taker': '$eq': null, 'since': '$lte': new Date(), 'until': '$gte': new Date()],  (err, requests) =>
-    @response.json requests
+    Resource.find ['type': 'requests', 'taker': '$eq': null, 'start': '$lte': new Date(), 'end': '$gte': new Date()],  (err, requests) =>
+      @response.json requests
 
   #
   # Mark a resource consumed (tickbox)

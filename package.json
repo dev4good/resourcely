@@ -34,7 +34,8 @@
   },
   "dependencies": {
     "zappa":                  ">= 0.3.3",
-    "mongoose-auth":          ">= 0.0.12"
+    "mongoose-auth":          ">= 0.0.12",
+    "mongoose":               ">= 2.5.9"
   },
   "scripts": {
     "start":                  "coffee app.coffee"

@@ -1,31 +1,11 @@
 mongoose = require 'mongoose'
-mongooseAuth = require 'mongoose-auth'
+supergoose = require 'supergoose'
 
 UserSchema = new mongoose.Schema
+  openId: String
   resources: [{ type: mongoose.Schema.ObjectId, ref: 'Resource' }]
 
-UserSchema.plugin mongooseAuth,
-  everymodule:
-    everyauth:
-      User: ->
-        User
-
-  password:
-    loginWith: 'email'
-
-    extraParams:
-      name:
-        first: String
-        last: String
-      email: String
-
-    everyauth:
-      getLoginPath: "/login"
-      postLoginPath: "/login"
-      getRegisterPath: "/register"
-      postRegisterPath: "/register"
-      loginSuccessRedirect: "/"
-      registerSuccessRedirect: "/"
+UserSchema.plugin supergoose
 
 User = mongoose.model 'User', UserSchema
 module.exports = User

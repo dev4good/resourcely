@@ -34,8 +34,10 @@
   },
   "dependencies": {
     "zappa":                  ">= 0.3.3",
-    "mongoose-auth":          ">= 0.0.12",
-    "mongoose":               ">= 2.5.9"
+    "passport":               ">= 0.1.11",
+    "passport-google":        ">= 0.2.0",
+    "mongoose":               ">= 2.5.9",
+    "supergoose":             ">= 0.0.4"
   },
   "scripts": {
     "start":                  "coffee app.coffee"

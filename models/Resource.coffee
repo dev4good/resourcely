@@ -1,6 +1,6 @@
 mongoose = require 'mongoose'
 
-Resource = new mongoose.Schema
+ResourceSchema = new mongoose.Schema
   name: String
   description: String
   start: Date
@@ -8,12 +8,13 @@ Resource = new mongoose.Schema
   location:
     lon: Number
     lat: Number
-  sent: { type: Date, default: Date.now }
-  resources:
+  tags: [ String ]
+  createdAt: { type: Date, default: Date.now }
+  taker:
     type: mongoose.Schema.ObjectId
     ref: 'User'
 
-Resource.index
+ResourceSchema.index
   location: '2d'
 
-module.exports = mongoose.model 'Resource', Resource
+module.exports = mongoose.model 'Resource', ResourceSchema

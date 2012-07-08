@@ -1,6 +1,9 @@
 mongoose = require 'mongoose'
 
 ResourceSchema = new mongoose.Schema
+  type:
+    type: String
+    enum: ['offer', 'request']
   name: String
   description: String
   start: Date

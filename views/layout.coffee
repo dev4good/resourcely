@@ -19,11 +19,12 @@ html ->
         partial "shared/header"
 
     section id: "content", role: "main", ->
-      div class: "container", ->
-        body @body
-        if @sidebar
-          aside id: "sidebar", role: "complementary", ->
-            @sidebar
+      div class: "tab-content", ->
+        div id: "want", class: "tab-pane active container", ->
+          h2 -> "fakse tab 1"
+        div id: "have", class: "tab-pane container", ->
+          h2 -> "fake tab 2"
+        #body @body
 
     footer id: "footer", class: "footer", role: "contentinfo", ->
       div class: "container", ->

@@ -11,7 +11,7 @@ require('zappa') ->
     @use 'bodyParser',
       'methodOverride',
       @app.router,
-      'static',
+      static: __dirname + '/static',
       mongooseAuth.middleware()
 
   @configure

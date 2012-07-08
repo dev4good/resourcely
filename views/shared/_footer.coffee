@@ -3,3 +3,5 @@ cite class: "copyright", ->
   if @author and @email
     a @author, href: @email
   span @year or 2012
+
+script src: 'scripts/webapp.js'

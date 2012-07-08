@@ -14,16 +14,19 @@ html ->
         div class: "container", ->
           partial "shared/navigation"
 
+    div style: "text-align: center", ->
+      img src: 'img/gr_logo.png'
+
     section id: "content", role: "main", ->
       div class: "tab-content", ->
         div id: "want", class: "tab-pane active container", ->
           h1 -> "I want to obtain resources."
           h2 -> "We currently have the following resources available:"
-         ul id: "offerlist", style: "list-style-type: none"
+        # ul id: "offerlist", style: "list-style-type: none"
         div id: "have", class: "tab-pane container", ->
           h1 -> "I have a resource to offer."
           h2 -> "The following requests are on our system that could be fulfillled by you:"
-        ul id: "reqlist", style: "list-style-type: none"
+        # ul id: "reqlist", style: "list-style-type: none"
         #body @body
 
     footer id: "footer", class: "footer", role: "contentinfo", ->

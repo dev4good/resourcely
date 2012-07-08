@@ -1,9 +1,19 @@
-mongoose = require 'mongoose'
 Resource = require './models/Resource'
 User     = require './models/User'
+passport = require 'passport'
 
 @include = ->
   @get '/': -> @render 'landing'
+
+  # Authenication
+  @app.get '/auth/google', passport.authenticate 'google'
+  @app.get '/auth/google/return', passport.authenticate 'google', { successRedirect: '/', failureRedirect: '/login' }
+
+  @get '/auth/:provider': ->
+    passport.authenticate @params.provider
+
+  @get '/auth/:provider/return': ->
+    passport.authenticate @params.provider, { successRedirect: '/', failureRedirect: '/login' }
 
   #
   # JSON for landing page stream (offers)

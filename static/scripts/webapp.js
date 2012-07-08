@@ -7,11 +7,11 @@ $(function () {
 $('#interaction a:last').tab('show');
 })
 
-$.getJSON('teststream.json', function(data) {
+$.getJSON('teststream.json',function(data) {
   var itemsWant = [];
 
   $.each(data, function(key, val) {
-    itemsWant.push('<li id="' + key + '"><button style="width: 40%" class="btn">' + val + '</button></li>');
+    itemsWant.push('<li id="' + [key].name + '"><button style="width: 40%" class="btn">' + [val].name + '</button></li>');
   });
 
   $('<ul/>', {

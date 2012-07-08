@@ -1,0 +1,2 @@
+@include = ->
+  @get '/': -> @render 'landing'

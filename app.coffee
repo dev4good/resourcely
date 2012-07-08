@@ -7,4 +7,4 @@ require('zappa') ->
     development: => @use errorHandler: {dumpExceptions: on, showStack: on}
     production: => @use 'errorHandler'
 
-  @get '/': -> @render 'landing'
+  @include 'routes'

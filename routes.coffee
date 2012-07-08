@@ -1,27 +1,35 @@
+mongoose = require 'mongoose'
+Resource = require './models/Resource'
+User     = require './models/User'
+
 @include = ->
   @get '/': -> @render 'landing'
 
   #
-  # JSON for landing page stream (requests)
+  # JSON for landing page stream (offers)
   #
   @get '/offers': ->
-    Resource.find ['type': 'offer', 'taker': '$eq': null, 'since': '$gte': Time.now, 'until': '$gte': Time.now],  (err, offers) =>
+    Resource.find ['type': 'offer', 'taker': '$eq': null, 'since': '$gte': new Date(), 'until': '$gte': new Date()],  (err, offers) =>
       @response.json offers
 
   #
   # JSON for landing page stream (requests)
   #
   @get '/requests': ->
-    Resource.find ['type': 'requests', 'taker': '$eq': null, 'since': '$lte': Time.now, 'until': '$gte': Time.now],  (err, offers) =>
+    Resource.find ['type': 'requests', 'taker': '$eq': null, 'since': '$lte': new Date(), 'until': '$gte': new Date()],  (err, requests) =>
     @response.json requests
 
   #
   # Mark a resource consumed (tickbox)
   #
-  @get '/consume/:id': ->
-    Resource.update '_id': id, [ 'taker': @session.user ], {}, (err, updated) =>
-      console.log "Error while updating resource" if err?
-      @response.json updated unless err?
+  @get /\/consume\/(\w+)/, ->
+    if @session?.user?
+      Resource.update '_id': @params[0], [ 'taker': @session.user ], {}, (err, updated) =>
+        console.log "Error while updating resource" if err?
+        @response.json updated unless err?
+    else
+      console.log "You are not logged in"
+      @response.redirect 'home'
 
   #
   # Adding offers

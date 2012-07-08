@@ -11,11 +11,12 @@ $.getJSON('teststream.json', function(data) {
   var items = [];
 
   $.each(data, function(key, val) {
-    items.push('<li id="' + key + '">' + val + '</li>');
+    items.push('<li id="' + key + '"><button style="width: 40%" class="btn">' + val + '</button></li>');
   });
 
   $('<ul/>', {
     'id': 'interaction',
+    'style': 'list-style-type: none',
     html: items.join('')
-  }).appendTo('#want');
+  }).appendTo('#offerlist');
 });

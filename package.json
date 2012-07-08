@@ -1,0 +1,42 @@
+{
+  "name":                     "resourcely",
+  "private":                  true,
+  "version":                  "0.0.1",
+  "description":              "PubSub for charity resources",
+  "homepage":                 "http://dev4good.github.com/resourcely",
+  "main":                     "./server.js",
+  "author":                   "undefined <undefined>",
+  "keywords": [
+    "node"
+  ],
+  "maintainers": [{
+    "name":                   "undefined",
+    "email":                  "undefined"
+  }],
+  "contributors": [
+  ],
+  "licenses": [
+    {
+      "type":                 "MIT",
+      "url":                  "http://mths.be/mit"
+    }
+  ],
+  "bugs": {
+    "url":                    "https://github.com/dev4good/resourcely/issues"
+  },
+  "repository": {
+    "type":                   "git",
+    "url":                    "https://github.com/dev4good/resourcely.git"
+  },
+  "engines": {
+    "node":                   ">= 0.4.0",
+    "npm":                    "1"
+  },
+  "dependencies": {
+    "zappa":                  ">= 0.3.3",
+    "mongoose-auth":          ">= 0.0.12"
+  },
+  "scripts": {
+    "start":                  "coffee app.coffee"
+  }
+}

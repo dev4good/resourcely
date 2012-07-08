@@ -11,16 +11,15 @@ require('zappa') ->
     returnURL: 'http://localhost:3000/auth/google/return'
     , realm: 'http://localhost:3000'
     , (identifier, profile, done) ->
-      console.log [identifier, profile, done]
       User.findOrCreate { openId: identifier }, (err, user) ->
-        done err, user
+        done err, { user: user, profile: profile }
 
-  passport.serializeUser (user, done) ->
-    done null, user._id
+  passport.serializeUser (auth, done) ->
+    done null, auth
 
-  passport.deserializeUser (id, done) ->
-    User.findOne id, (err, user) ->
-      done err, user
+  passport.deserializeUser (auth, done) ->
+    User.findById auth.user._id, (err, user) ->
+      done err, auth
 
   @configure =>
     #@set 'view engine': 'jade'

@@ -3,7 +3,8 @@ User     = require './models/User'
 passport = require 'passport'
 
 @include = ->
-  @get '/': -> @render 'landing'
+  @get '/': ->
+    @render 'landing': {passport: @session.passport}
 
   # Authenication
   @app.get '/auth/google', passport.authenticate 'google'
